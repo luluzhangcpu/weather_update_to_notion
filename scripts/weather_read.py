@@ -32,7 +32,7 @@ def insert_to_notion(day1,high,low,weather,date1):
         "high":get_rich_text(high),
         "low":get_rich_text(low),
         "weather":get_rich_text(weather),
-        "Date":date1
+        "Date":get_date(date1)
     }
     response = client.pages.create(parent=parent,properties=properties)
 
