@@ -47,7 +47,6 @@ if __name__ == "__main__":
     weather_api= options.weather_api
     database_id = options.database_id
     notion_token = options.notion_token
-    client = Client(auth=notion_token, log_level=logging.ERROR)
     weather_url = ''.join(['https://api.seniverse.com/v3/weather/daily.json?key=',weather_api,'&location=hangzhou&language=zh-Hans&unit=c&start=0&days=5'])
     a = 1
     while a:
@@ -58,6 +57,7 @@ if __name__ == "__main__":
         a = False
     content1 = file1.json()
     results1 = content1.get('results')[0]
+    client = Client(auth=notion_token, log_level=logging.ERROR)
     if results1:
         city_forecast1 = results1['daily'][0]  # 当天天气
         city_forecast2 = results1['daily'][1]  # 明天天气
