@@ -41,10 +41,15 @@ if __name__ == "__main__":
     parser.add_argument("weather_api")
     parser.add_argument("notion_token")
     parser.add_argument("database_id")
+    parser.add_argument("ref")
+    parser.add_argument("repository")
     options = parser.parse_args()
     weather_api= options.weather_api
     database_id = options.database_id
     notion_token = options.notion_token
+    ref = options.ref
+    branch = ref.split("/")[-1]
+    repository = options.repository
     client = Client(auth=notion_token, log_level=logging.ERROR)
     weather_url = ''.join(['https://api.seniverse.com/v3/weather/daily.json?key=',weather_api,'&location=hangzhou&language=zh-Hans&unit=c&start=0&days=5'])
     a = 1
