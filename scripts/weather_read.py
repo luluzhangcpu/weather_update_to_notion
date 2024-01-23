@@ -13,12 +13,7 @@ def get_title(content):
 def get_rich_text(content):
     return {"rich_text": [{"type": "text", "text": {"content": content}}]}
 
-def get_date(start):
-    return {
-        "date": {
-            "start": start,
-        }
-    }
+
 
 
 
@@ -31,7 +26,7 @@ def insert_to_notion(day1,high,low,weather,date1):
         "high":get_rich_text(high),
         "low":get_rich_text(low),
         "weather":get_rich_text(weather),
-        "Date":get_date(date1)
+        "Date":date1
     }
     response = client.pages.create(parent=parent,properties=properties)
 
