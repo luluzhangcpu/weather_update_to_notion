@@ -38,14 +38,13 @@ def insert_to_notion(day1,high,low,weather):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("weather_api")
     parser.add_argument("notion_token")
     parser.add_argument("database_id")
     options = parser.parse_args()
     weather_api= options.weather_api
     database_id = options.database_id
     notion_token = options.notion_token
-    weather_url = ''.join(['https://api.seniverse.com/v3/weather/daily.json?key=',weather_api,'&location=hangzhou&language=zh-Hans&unit=c&start=0&days=5'])
+    weather_url = 'https://api.seniverse.com/v3/weather/daily.json?key=SBzIkBclMSWPvpeJb&location=hangzhou&language=zh-Hans&unit=c&start=0&days=5'
     a = 1
     while a:
         try:
