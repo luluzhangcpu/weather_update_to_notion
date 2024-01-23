@@ -62,7 +62,7 @@ if __name__ == "__main__":
         city_forecast2 = results1['daily'][1]  # 明天天气
         city_forecast3 = results1['daily'][2]  # 后天天气
         day1 = city_forecast1.get('date')  # 获取当天日期
-        date1 = dt.strptime(day1, '%Y-%m-%d %H:%M:%S') # 获取当天日期
+        date1 = dt.strptime(day1, '%Y-%m-%d') # 获取当天日期
         high = city_forecast1.get('high') # 获取当天最高温度
         low = city_forecast1.get('low')  # 获取当天最低温度
         weather = city_forecast1.get('text_day') # 获取当天天气类型
