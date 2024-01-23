@@ -35,3 +35,4 @@ jobs:
           git config --local user.name "GitHub Action"
           git add .
           git commit -m 'add new cover' || echo "nothing to commit"
+          git push || echo "nothing to push"
