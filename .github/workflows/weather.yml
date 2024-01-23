@@ -26,13 +26,3 @@ jobs:
       - name: weather sync
         run: |
           python scripts/weather_read.py "${{secrets.NOTION_TOKEN}}" "${{secrets.NOTION_DATABASE_ID}}"
-      - name: Set default year if not provided
-        run: echo "YEAR=$(date +"%Y")" >> $GITHUB_ENV
-        if: env.YEAR == ''
-      - name: push
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git commit -m 'add new cover' || echo "nothing to commit"
-          git push || echo "nothing to push"
