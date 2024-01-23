@@ -25,7 +25,7 @@ jobs:
           pip install -r requirements.txt
       - name: weather sync
         run: |
-          python scripts/weather_read.py "${{secrets.weather_api}}" "${{secrets.NOTION_TOKEN}}" "${{secrets.NOTION_DATABASE_ID}}" "${{ github.ref }}" "${{ github.repository }}"
+          python scripts/weather_read.py "${{secrets.weather_api}}" "${{secrets.NOTION_TOKEN}}" "${{secrets.NOTION_DATABASE_ID}}"
       - name: Set default year if not provided
         run: echo "YEAR=$(date +"%Y")" >> $GITHUB_ENV
         if: env.YEAR == ''
