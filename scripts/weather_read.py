@@ -41,8 +41,6 @@ if __name__ == "__main__":
     parser.add_argument("weather_api")
     parser.add_argument("notion_token")
     parser.add_argument("database_id")
-    parser.add_argument("ref")
-    parser.add_argument("repository")
     options = parser.parse_args()
     weather_api= options.weather_api
     database_id = options.database_id
