@@ -26,6 +26,7 @@ def insert_to_notion(day1,high,low,weather):
         "low":get_rich_text(low),
         "weather":get_rich_text(weather),
     }
+    response = client.pages.create(parent=parent,properties=properties)
 
 
 
