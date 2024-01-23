@@ -13,13 +13,6 @@ def get_title(content):
 def get_rich_text(content):
     return {"rich_text": [{"type": "text", "text": {"content": content}}]}
 
-def get_date(start):
-    return {
-        "date": {
-            "start": start,
-            "time_zone": "Asia/Shanghai",
-        }
-    }
 
 
 
