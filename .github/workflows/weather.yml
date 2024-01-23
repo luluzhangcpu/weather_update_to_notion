@@ -25,4 +25,4 @@ jobs:
           pip install -r requirements.txt
       - name: weather sync
         run: |
-          python scripts/weather_read.py "${{secrets.NOTION_TOKEN}}" "${{secrets.NOTION_DATABASE_ID}}"
+          python scripts/weather_read.py "${{secrets.weather_api}}" "${{secrets.NOTION_TOKEN}}" "${{secrets.NOTION_DATABASE_ID}}"
