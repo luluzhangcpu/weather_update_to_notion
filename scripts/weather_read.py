@@ -22,7 +22,8 @@ def get_date(start):
 
 
 
-def insert_to_notion(day1,high,low,weather):
+def insert_to_notion(day1,high,low,weather_day,weather_night,rainfall,precipitation,\
+                     wind_direction,wind_direction_degree,wind_speed,wind_scale,humidity):
     """插入到notion"""
     time.sleep(0.3)
     parent = {"database_id": database_id, "type": "database_id"}
@@ -30,7 +31,15 @@ def insert_to_notion(day1,high,low,weather):
         "Day":get_title(day1),
         "high":get_rich_text(high),
         "low":get_rich_text(low),
-        "weather":get_rich_text(weather),
+        "weather_day":get_rich_text(weather_day),
+        "weather_night":get_rich_text(weather_night),
+        "rainfall":get_rich_text(rainfall),
+        "precipitation":get_rich_text(precipitation),
+        "wind_direction":get_rich_text(wind_direction),
+        "wind_direction_degree":get_rich_text(wind_direction_degree),
+        "wind_speed":get_rich_text(wind_speed),
+        "wind_scale":get_rich_text(wind_scale),
+        "humidity":get_rich_text(humidity),
         "Date":get_date(day1)
     }
     response = client.pages.create(parent=parent,properties=properties)
@@ -64,5 +73,14 @@ if __name__ == "__main__":
         day1 = city_forecast1.get('date')  # 获取当天日期
         high = city_forecast1.get('high') # 获取当天最高温度
         low = city_forecast1.get('low')  # 获取当天最低温度
-        weather = city_forecast1.get('text_day') # 获取当天天气类型
-        insert_to_notion(day1,high,low,weather)
+        weather_day = city_forecast1.get('text_day') # 获取白天天气类型
+        weather_night = city_forecast1.get('text_night') # 获取晚上天气类型
+        rainfall = city_forecast1.get('rainfall') # 获取晚上天气类型
+        precipitation = city_forecast1.get('precip') # 获取晚上天气类型
+        wind_direction = city_forecast1.get('wind_direction')
+        wind_direction_degree = city_forecast1.get('wind_direction_degree')
+        wind_speed = city_forecast1.get('wind_speed')
+        wind_scale = city_forecast1.get('wind_scale')
+        humidity = city_forecast1.get('humidity')       
+        insert_to_notion(day1,high,low,weather_day,weather_night,rainfall,precipitation,\
+                         wind_directrion,wind_direction_degree,wind_speed,wind_scale,humidity)
