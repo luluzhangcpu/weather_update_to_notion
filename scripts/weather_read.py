@@ -27,11 +27,11 @@ def insert_to_notion(day1,high,low,weather):
     time.sleep(0.3)
     parent = {"database_id": database_id, "type": "database_id"}
     properties = {
-        "Day":get_title(day1),
-        "high":get_rich_text(high),
-        "low":get_rich_text(low),
-        "weather":get_rich_text(weather),
-        "Date":get_date(day1)
+        "Day":day1,
+        "high":high,
+        "low":low,
+        "weather":weather,
+        "Date":day1
     }
     response = client.pages.create(parent=parent,properties=properties)
 
