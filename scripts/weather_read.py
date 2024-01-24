@@ -83,4 +83,4 @@ if __name__ == "__main__":
         wind_scale = city_forecast1.get('wind_scale')
         humidity = city_forecast1.get('humidity')       
         insert_to_notion(day1,high,low,weather_day,weather_night,rainfall,precipitation,\
-                         wind_directrion,wind_direction_degree,wind_speed,wind_scale,humidity)
+                         wind_direction,wind_direction_degree,wind_speed,wind_scale,humidity)
