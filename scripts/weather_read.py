@@ -7,13 +7,13 @@ from notion_client import Client
 import logging
 from datetime import datetime as dt
 
-def get_title(content):
+def read_title(content):
     return {"title": [{"type": "text", "text": {"content": content}}]}
 
-def get_rich_text(content):
+def read_rich_text(content):
     return {"rich_text": [{"type": "text", "text": {"content": content}}]}
 
-def get_date(start):
+def read_date(start):
     return {
         "date": {
             "start": start,
@@ -28,19 +28,19 @@ def insert_to_notion(day1,high,low,weather_day,weather_night,rainfall,precipitat
     time.sleep(0.3)
     parent = {"database_id": database_id, "type": "database_id"}
     properties = {
-        "Day":get_title(day1),
-        "high":get_rich_text(high),
-        "low":get_rich_text(low),
-        "weather_day":get_rich_text(weather_day),
-        "weather_night":get_rich_text(weather_night),
-        "rainfall":get_rich_text(rainfall),
-        "precipitation":get_rich_text(precipitation),
-        "wind_direction":get_rich_text(wind_direction),
-        "wind_direction_degree":get_rich_text(wind_direction_degree),
-        "wind_speed":get_rich_text(wind_speed),
-        "wind_scale":get_rich_text(wind_scale),
-        "humidity":get_rich_text(humidity),
-        "Date":get_date(day1)
+        "Day":read_title(day1),
+        "high":read_rich_text(high),
+        "low":read_rich_text(low),
+        "weather_day":read_rich_text(weather_day),
+        "weather_night":read_rich_text(weather_night),
+        "rainfall":read_rich_text(rainfall),
+        "precipitation":read_rich_text(precipitation),
+        "wind_direction":read_rich_text(wind_direction),
+        "wind_direction_degree":read_rich_text(wind_direction_degree),
+        "wind_speed":read_rich_text(wind_speed),
+        "wind_scale":read_rich_text(wind_scale),
+        "humidity":read_rich_text(humidity),
+        "Date":read_date(day1)
     }
     response = client.pages.create(parent=parent,properties=properties)
 
@@ -55,7 +55,9 @@ if __name__ == "__main__":
     database_id = options.database_id
     notion_token = options.notion_token
     weather_api = options.weather_api
-    weather_url = ''.join(['https://api.seniverse.com/v3/weather/daily.json?key=',weather_api,'&location=hangzhou&language=zh-Hans&unit=c&start=0&days=5'])
+    weather_url = ''.join(['https://api.seniverse.com/v3/weather/daily.json?key=',\
+                           weather_api,\
+                           '&location=hangzhou&language=zh-Hans&unit=c&start=0&days=5'])
     a = 1
     while a:
         try:
